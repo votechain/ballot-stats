@@ -29,7 +29,7 @@
 
 
 /* eslint-disable quotes, comma-spacing */
-var PrecacheConfig = [["/bower_components/webcomponentsjs/webcomponents-lite.min.js","0fc977baabe843e858c7d6cde05986e7"],["/index.html","4c38c87a62a95be161fcaf9c1d5c00ca"],["/manifest.json","b4aec6f31f9b7310408e32d4c1c9aed5"],["/src/election-results-stats.html","a12b3916dbec409a60855fea6a55f0a7"],["/src/my-app.html","88203649fd1c42ad89d96d5453589e1a"]];
+var PrecacheConfig = [["/bower_components/webcomponentsjs/webcomponents-lite.min.js","0fc977baabe843e858c7d6cde05986e7"],["/index.html","4c38c87a62a95be161fcaf9c1d5c00ca"],["/manifest.json","b4aec6f31f9b7310408e32d4c1c9aed5"],["/src/election-results-stats.html","a12b3916dbec409a60855fea6a55f0a7"],["/src/my-app.html","83c4f3f395cc027cb1fddaa6e427dd1f"],["/src/voters-turnout-graph.html","c52f088a507248bb0c0cf4ee42cdde04"]];
 /* eslint-enable quotes, comma-spacing */
 var CacheNamePrefix = 'sw-precache-v1--' + (self.registration ? self.registration.scope : '') + '-';
 

@@ -2,6 +2,7 @@
   "entrypoint": "index.html",
   "shell": "src/my-app.html",
   "fragments": [
-    "src/election-results-stats.html"
+    "src/election-results-stats.html",
+    "src/voters-turnout-graph.html"
   ]
 }

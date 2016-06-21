@@ -259,7 +259,8 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
       <app-drawer>
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="election-results-stats" href="/election-results-stats">View One</a>
+          <a name="election-results-stats" href="/election-results-stats">PREP</a>
+          <a name="voters-turnout-graph" href="/voters-turnout-graph">Participación Ciudadana</a>
         </iron-selector>
       </app-drawer>
 
@@ -275,6 +276,7 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
           <election-results-stats name="election-results-stats"></election-results-stats>
+          <voters-turnout-graph name="voters-turnout-graph"></voters-turnout-graph>
         </iron-pages>
 
       </app-header-layout>
