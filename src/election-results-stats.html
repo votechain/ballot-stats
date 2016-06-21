@@ -45,16 +45,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 16px 0;
         color: #212121;
       }
+      google-chart {
+        width: 100%;
+      }
     </style>
 
 
     <iron-ajax
       auto
-      url="https://demo7460034.mockable.io/prep"
+      url="http://demo7460034.mockable.io/prep"
       handle-as="json"
       on-response="handleResponse"
       debounce-duration="100">
     </iron-ajax>
+    <iron-ajax id="ironAjax"></iron-ajax>
 
     <div class="card">
       <google-chart
@@ -64,30 +68,57 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </google-chart>
     </div>
 
+    <div class="card">
+      <paper-datatable data="{{dataTable}}" selectable multi-selection>
+        <paper-datatable-column header="Candidatxs" property="title" type="String" style="width:99%;" sortable></paper-datatable-column>
+        <paper-datatable-column header="Partido" property="calories" type="String" align="right" sortable tooltip="Partido politico." sorted></paper-datatable-column>
+        <paper-datatable-column header="Votos" property="fat" type="Number" align="right" format-value="[[toFixedOne]]" sortable tooltip="Total de votos."></paper-datatable-column>
+      </paper-datatable>
+    </div>
+
+
   </template>
 
   <script>
 
     Polymer({
       is: 'election-results-stats',
-      handleResponse: function (response) {
-        var that = this;
+      ready: function () {
+        var ironAjax = this.$.ironAjax;
 
-        this.votingTotals = response.detail.response[0].voting.voting_totals;
-        this.data = [['Nombre del candidato', 'votos', { role: 'style' } ]];
+        ironAjax.url = 'http://52.40.75.90:8000/api/v1/votes/';
+        ironAjax.generateRequest();
 
-        this.votingTotals.forEach(function (column) {
-          that.data.push([
-            column.candidate_name.concat(' (', column.politic_party, ')'),
-            Number(column.total_votes),
-            '#b87333'
-            ])
-        }, this.votingTotals);
+        ironAjax.addEventListener('response', function (ev) {
+          console.log(ev);
+          console.log(ev.detail.response);
+        });
+
+        this.data = [
+          ['Nombre del candidato', 'votos', { role: 'style' }],
+          ['Isabel Miranda de Wallace', 546, '#014AA6'],
+          ['Beatriz Paredes Rangel', 231, '#00923F'],
+          ['Miguel Ángel Mancera', 520, '#FFCB01'],
+          ['Rosario Guerra Díaz', 233, '#00A4AC']
+        ];
 
         this.options = {
           legend: { position: 'top', maxLines: 3 },
           bar: { groupWidth: '75%' },
         };
+
+        this.dataTable = [
+  				{id: 0, title: 'Isabel Miranda de Wallace', calories: 'PAN', fat:546},
+  				{id: 1, title: 'Beatriz Paredes Rangel', calories: "PRI", fat:231},
+  				{id: 2, title: 'Miguel Ángel Mancera', calories: 'PRD', fat:520},
+  				{id: 3, title: 'Rosario Guerra Díaz', calories: 'Nueva Alianza', fat:233}
+  			];
+  			this.toFixedOne = function(value){
+  				return value.toFixed(1);
+  			};
+  			this.toPercentage = function(value){
+  				return Math.round(value * 10000)/100 + '%';
+  			};
       }
     });
 
