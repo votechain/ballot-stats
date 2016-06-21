@@ -1,2 +1,1 @@
-# ballot-stats
-Ballot stats during and after the voting.
+Ballot-stats for during and after the voting process.
